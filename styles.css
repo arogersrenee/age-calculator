@@ -72,3 +72,48 @@ table {
     --clr-line: #DCDCDC;
     --clr-purewhite: #ffffff;
 }
+
+body {
+    background-color: var(--clr-lightgray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: var(--ff-primary);
+}
+
+main {
+    background-color: var(--clr-purewhite);
+    width: 22.5rem;
+    padding: 3rem 1.5rem;
+    border-radius: 1.5rem 1.5rem 6.25rem 1.5rem;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.results {
+    font-weight: var(--fw-extrabold);
+    font-size: 3.5rem;
+}
+
+.results > div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.results-output {
+    display: block;
+    
+}
+
+.highlight {
+    color: var(--clr-accent);
+}
