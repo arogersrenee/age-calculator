@@ -87,6 +87,9 @@ main {
     width: 22.5rem;
     padding: 3rem 1.5rem;
     border-radius: 1.5rem 1.5rem 6.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 form {
@@ -97,6 +100,41 @@ form {
 form > div {
     display: flex;
     flex-direction: column;
+}
+
+.divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.arrow {
+    /* padding: 2rem; */
+    height: 4rem;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--clr-accent);
+    position: relative;
+    z-index: 5;
+
+}
+
+hr {
+    position: absolute;
+    width: 100%;
+    border: 1px solid var(--clr-line);
+    transform: translateY(-50%);
+}
+
+img {
+    width: 1.5rem;
+    height: 1.5rem;
+    
 }
 
 .results {
@@ -111,7 +149,6 @@ form > div {
 
 .results-output {
     display: block;
-    
 }
 
 .highlight {
