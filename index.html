@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet">
   
   <title>Ashley R | Age calculator app</title>
 
@@ -16,14 +22,17 @@
       <div>
         <label for="day">Day</label>
         <input type="text" id="day" name="day" placeholder="DD" size="2" min="1" max="21">
+        <span class="error-msg hidden"></span>
       </div>
       <div>
         <label for="month">Month</label>
         <input type="text" id="month" name="month" placeholder="MM" size="2" min="1" max="12">
+        <span class="error-msg hidden"></span>
       </div>
       <div>
         <label for="year">Year</label>
         <input type="text" id="year" name="year" placeholder="YYYY" size="4">
+        <span class="error-msg hidden"></span>
       </div>
     </form>
   </section>
