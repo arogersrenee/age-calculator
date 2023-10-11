@@ -11,18 +11,33 @@
 </head>
 <body>
 
-  Day
-  DD
+  <section class="inputs">
+    <form action="">
+      <div>
+        <label for="day">Day</label>
+        <input type="text" id="day" name="day" placeholder="DD" size="2" min="1" max="21">
+      </div>
+      <div>
+        <label for="month">Month</label>
+        <input type="text" id="month" name="month" placeholder="MM" size="2" min="1" max="12">
+      </div>
+      <div>
+        <label for="year">Year</label>
+        <input type="text" id="year" name="year" placeholder="YYYY" size="4">
+      </div>
+    </form>
+  </section>
 
-  Month
-  MM
+  <div class="arrow">
+    <img src="assets/images/icon-arrow.svg" alt="" class="arrow">
+    <hr>
+  </div>
 
-  Year
-  YYYY
-
-  -- years
-  -- months
-  -- days
+  <section class="results">
+    <span class="results-output"><span class="highlight">--</span> months</span>
+    <span class="results-output"><span class="highlight">--</span> days</span>
+    <span class="results-output"><span class="highlight">--</span> years</span>
+  </section>
   
 </body>
 </html>
