@@ -84,7 +84,7 @@ body {
 
 main {
     background-color: var(--clr-purewhite);
-    width: 22.5rem;
+    width: 21.5rem;
     padding: 3rem 1.5rem;
     border-radius: 1.5rem 1.5rem 6.25rem 1.5rem;
     display: flex;
@@ -94,12 +94,49 @@ main {
 
 form {
     display: flex;
+    gap: 1rem;
     justify-content: space-between;
 }
 
 form > div {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    text-transform: uppercase;
+    letter-spacing: 0.1875rem;
+    color: var(--clr-gray);
+    font-size: 0.75rem;
+    font-weight: var(--fw-bold);
+}
+
+input {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--clr-line);
+    color: var(--clr-black);
+    width: 100%;
+}
+
+input:active, input:focus {
+    outline: none;
+    border: 1px solid var(--clr-accent);
+
+}
+
+input, input::placeholder {
+    font-weight: var(--fw-bold);
+    font-size: 1.25rem;
+    color: var(--clr-black);
+    letter-spacing: 0.0125rem;
+    caret-color: var(--clr-accent); 
+    cursor: pointer;
+}
+
+input::placeholder {  
+    opacity: 0.5; 
 }
 
 .divider {
@@ -107,11 +144,9 @@ form > div {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
-.arrow {
-    /* padding: 2rem; */
+button {
     height: 4rem;
     width: 4rem;
     display: flex;
@@ -121,7 +156,12 @@ form > div {
     background-color: var(--clr-accent);
     position: relative;
     z-index: 5;
+    border: none;
+}
 
+button:hover, button:active{
+    background-color: var(--clr-black);
+    cursor: pointer;
 }
 
 hr {
@@ -140,6 +180,9 @@ img {
 .results {
     font-weight: var(--fw-extrabold);
     font-size: 3.5rem;
+    line-height: 110%;
+    letter-spacing: -0.07rem;
+    font-style: italic;
 }
 
 .results > div {
@@ -153,4 +196,40 @@ img {
 
 .highlight {
     color: var(--clr-accent);
+}
+
+#error-msg-mobile {
+    font-size: 0.75rem;
+    color: var(--clr-error);
+    font-size: 0.75rem;
+    font-style: italic;
+    font-weight: var(--fw-regular);
+    line-height: normal;
+}
+
+
+/* Desktop 1440PX */
+@media screen and (min-width: 90rem) {
+    main {
+        width: 45.5rem;
+        padding: 3.5rem;
+        border-radius: 1.5rem 1.5rem 12.5rem 1.5rem;
+        gap: 2rem;
+    }
+
+    form {
+        gap: 2rem;
+        justify-content: left;
+    }
+
+    input {
+        width: 7rem;
+    }
+}
+
+
+
+
+.hidden {
+    display: none;
 }

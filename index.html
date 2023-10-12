@@ -19,26 +19,27 @@
 
   <main>
     <section class="inputs">
-      <form action="">
+      <form action="" id="birthday-form">
         <div>
           <label for="day">Day</label>
-          <input type="text" id="day" name="day" placeholder="DD" size="2" min="1" max="21">
+          <input type="input" id="day" name="day" placeholder="DD">
           <span class="error-msg hidden">Error</span>
         </div>
         <div>
           <label for="month">Month</label>
-          <input type="text" id="month" name="month" placeholder="MM" size="2" min="1" max="12">
+          <input type="input" id="month" name="month" placeholder="MM">
           <span class="error-msg hidden">Error</span>
         </div>
         <div>
           <label for="year">Year</label>
-          <input type="text" id="year" name="year" placeholder="YYYY" size="4">
+          <input type="input" id="year" name="year" placeholder="YYYY">
           <span class="error-msg hidden">Error</span>
         </div>
       </form>
+      <span id="error-msg-mobile" class="hidden">Error Message here</span>
     </section>
     <div class="divider">
-      <div class="arrow"><img src="assets/images/icon-arrow.svg" alt=""></div>
+      <button type="submit" form="birthday-form"><img src="assets/images/icon-arrow.svg" alt=""></button>
       <hr>
     </div>
     <section class="results">
@@ -50,3 +51,9 @@
   
 </body>
 </html>
+
+
+<!-- <div class="divider">
+  <div class="arrow"><img src="assets/images/icon-arrow.svg" alt=""></div>
+  <hr>
+</div> -->
