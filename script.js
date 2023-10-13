@@ -1,128 +1,41 @@
-// month = input - 1 for index purposes
-// Sample: 33 years, 4 months and 26 days.
+// Get form inputs
+let birthYear = Number("1990"); // user input convert to number! 
+let birthDay = Number("16"); // user input convert to number!
+let birthMonth = Number("05"); // user input convert to number!
 
-// Get Birthday & variables
-let userBirthdate = new Date(1990, 4, 16); // insert variables for this function
+// Get form & submit button
 
-// let userBirthdate = new Date(1990, 0, 15); // insert variables for this function
+// Get 
 
+function getBirthdateInfo() {
+    const birthdate = new Date(birthYear, birthMonth - 1, birthDay); // YYYY, MM, DD format
+    const age = calculateAge(birthdate);
 
-let birthYear = userBirthdate.getFullYear(); // user input convert to number! 
-let birthDay = userBirthdate.getDate(); // user input convert to number!
-let birthMonth = userBirthdate.getMonth() + 1; // user input convert to number!, zero based index so need to add 1
-
-console.log("user Birthdate: " + userBirthdate);
-console.log("user birth Year: " + birthYear);
-console.log("user birthday: " + birthDay);
-console.log("user birth month: " + birthMonth); // zero based index so need to add 1
-
-
-// Get Current Year
-const todayDate = new Date(); // gets current date (2023, 9 (oct), )
-
-let currentYear = todayDate.getFullYear(); // user input convert to number! 
-let currentDay = todayDate.getDate(); // user input convert to number!
-let currentMonth = todayDate.getMonth() + 1; // user input convert to number!, zero based index so need to add 1
-
-let outputYears = calcYearsAlive();
-
-function calcYearsAlive() {
-    let ageYears = ((currentYear - 1) - birthYear); 
-    let ageMonths = ageYears * 12;
-
-    // Calulate left over months, if over 12, add extra year to ageYears
-    let remainingMonthsFromBirth = 12 - (birthMonth);
-    let addExtraYear = Math.trunc((12 - (birthMonth) + currentMonth) / 12); // trunc to drop the remainder
-    
-    console.log("user age in Months (minus current year): " + ageMonths);
-    console.log("user age in years: " + ageYears);
-    console.log("remaining birth months: " + remainingMonthsFromBirth);
-    console.log(`add ${addExtraYear} year if 12+ months remain`);
-    return ageYears + addExtraYear;
+    return {
+        birthdate: {
+            year: birthYear,
+            month: birthMonth,
+            day: birthDay
+        },
+        age: age
+    };
 }
 
+function calculateAge(birthdate) {
+    // const birthDate = new Date(birthdate);
+    const currentDate = new Date();
+    const difference = currentDate - birthdate;
 
-console.log("user total years: " + outputYears);
+    const years = Math.floor(difference / (365.25 * 24 * 60 * 60 * 1000));
+    const months = Math.floor((difference % (365.25 * 24 * 60 * 60 * 1000)) / (30.44 * 24 * 60 * 60 * 1000));
+    const days = Math.floor((difference % (30.44 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
 
-let outputMonths = calcMonthsRemaining();
-console.log("user total months: " + outputMonths);
-
-function calcMonthsRemaining() {
-    // Get months lived and return remainder 
-    let monthsLived = (((currentYear - 1) - birthYear) * 12)  + (12 - birthMonth) + (currentMonth - 1);
-    console.log("monthsLived: " + monthsLived);
-    return monthsLived % 12;
+    return { years, months, days };
 }
 
-// array for length of each month
-const monthLengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    // account for leap year
-    if ((currentYear % 4 == 0) || (currentYear % 100 == 0 && currentYear % 400 == 0)){
-        monthLengths[1] = 29;
-    }
+const userInfo = getBirthdateInfo();
 
-let daysInYear = calcDaysInYear(monthLengths);
+console.log(userInfo.birthdate.year, userInfo.birthdate.month, userInfo.birthdate.day);
+console.log(userInfo.age.years, userInfo.age.months, userInfo.age.days);
 
-function calcDaysInYear(array){
-    let days = 0;
-    for(let i = 0; i < array.length; i++){
-        days += array[i];
-    }
-    return days
-}
-
-console.log("days in a year: " + daysInYear)
-
-let totalDaysAlive = calcTotalDaysAlive();
-
-function calcTotalDaysAlive() { 
-    // calculate days alive (account for leap years!) -- This doen't include remainder days (( days left in the year, for year born and current year))
-    let ageInDays = calCAgeInDays()
-    let remainderDays = calcRemainderDays();
-
-    function calCAgeInDays() {
-        let days = 0;
-        let leapDays = 0;
-
-        for (let i = 0; i < outputYears ; i++ ){
-            if (((birthYear + i) % 4 == 0) || ((birthYear + i) % 100 == 0 && (birthYear + i) % 400 == 0)){
-                birthYear + i;
-                days += 365;
-                leapDays++;
-            } else {
-                birthYear + i;
-                days += 365;
-            }
-        }
-        return days + leapDays
-    }
-
-    // (caluculate remaining days in year from birthday minus remaining days in year from current date) - 1
-    function calcRemainderDays() {
-
-        let remainCurrentYearDays = monthLengths[currentMonth - 1] - currentDay;
-        let remainDaysFromBirthDay = monthLengths[birthMonth - 1] - birthDay;
-        
-        for (let i = currentMonth; i < monthLengths.length; i++)
-        {
-            remainCurrentYearDays += monthLengths[i];
-        }
-        
-        for (let i = birthMonth; i < monthLengths.length; i++)
-        {
-            remainDaysFromBirthDay += monthLengths[i];
-        }    
-
-        console.log("current remaining days in year: " + remainCurrentYearDays);
-        console.log("remaining days in year after birthday: " + remainDaysFromBirthDay);
-
-        return (remainDaysFromBirthDay - remainCurrentYearDays);
-    }
-    console.log("remainder days: " + remainderDays);
-    return ageInDays + remainderDays
-}
-
-
-// let outputMonths = ((remainingMonthsFromBirth + currentMonth) % 12) + 1 // not correct, will need to account for days left ... account for zero index with +1 ... 
-
-console.log("user age in days: " + totalDaysAlive)
+// Output userInfo to innerText placeholders
