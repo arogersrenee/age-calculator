@@ -197,14 +197,19 @@ img {
     color: var(--clr-accent);
 }
 
-#error-msg-mobile {
+.error-msg {
+    font-size: 0.65rem;
+    font-style: italic;
+}
+
+/* #error-msg-mobile {
     font-size: 0.75rem;
     color: var(--clr-error);
     font-size: 0.75rem;
     font-style: italic;
     font-weight: var(--fw-regular);
     line-height: normal;
-}
+} */
 
 
 /* Desktop 1440PX */
@@ -254,9 +259,18 @@ img {
         font-size: 6.5rem;
         letter-spacing: -0.13rem;
     }
+
+    .error-msg {
+        font-size: 0.875rem;
+        font-style: italic;
+    }
+
 }
 
 
+.error {
+    color: var(--clr-error);
+}
 
 
 .hidden {
