@@ -18,35 +18,34 @@
 <body>
 
   <main>
-    <section class="inputs">
+    <div class="inputs">
       <form action="" id="birthday-form">
         <div>
           <label for="day-input">Day</label>
-          <input type="input" id="day-input" name="day" placeholder="DD">
+          <input type="text" id="day-input" name="day" placeholder="DD">
           <span class="error error-msg hidden">Error</span>
         </div>
         <div>
           <label for="month-input">Month</label>
-          <input type="input" id="month-input" name="month" placeholder="MM">
+          <input type="text" id="month-input" name="month" placeholder="MM">
           <span class="error error-msg hidden">Error</span>
         </div>
         <div>
           <label for="year-input">Year</label>
-          <input type="input" id="year-input" name="year" placeholder="YYYY">
+          <input type="text" id="year-input" name="year" placeholder="YYYY">
           <span class="error error-msg hidden">Error</span>
         </div>
       </form>
-      <span id="error-msg-mobile" class="error hidden">Error Message here</span>
-    </section>
+    </div>
     <div class="divider">
-      <button type="submit" form="birthday-form"><img src="assets/images/icon-arrow.svg" alt=""></button>
+      <button type="submit" form="birthday-form" aria-label="submit age"><img src="assets/images/icon-arrow.svg" alt=""></button>
       <hr>
     </div>
-    <section class="results">
+    <div class="results">
       <div><span class="highlight" id="years-output">--</span><span class="results-output">years</span></div>
       <div><span class="highlight" id="months-output">--</span><span class="results-output">months</span></div>
       <div><span class="highlight" id="days-output">--</span><span class="results-output">days</span></div>
-    </section>
+    </div>
   </main>
 
   <script src="script.js"></script>
