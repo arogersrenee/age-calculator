@@ -202,14 +202,17 @@ img {
     font-style: italic;
 }
 
-/* #error-msg-mobile {
-    font-size: 0.75rem;
-    color: var(--clr-error);
-    font-size: 0.75rem;
-    font-style: italic;
-    font-weight: var(--fw-regular);
-    line-height: normal;
-} */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 
 /* Desktop 1440PX */
