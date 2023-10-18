@@ -14,7 +14,7 @@ const mobileErrMsg = document.querySelector("#error-msg-mobile");
 // Get output placeholders
 const outputYear = document.querySelector("#years-output");
 const outputDay = document.querySelector("#days-output");
-const outputMonth = document.querySelector("#month-output");
+const outputMonth = document.querySelector("#months-output");
 
 // validation error messages if:
 //   - Any field is empty when the form is submitted
@@ -40,7 +40,7 @@ function checkEmptyInput() {
     return true;
 }
 
-//   - The date is invalid e.g. 31/04/1991 (there are 30 days in April)    
+//   - Checks if the date is valid, considering the number of days in each month and the input year.   
 function checkValidInput() {
     const today = new Date();
     const userDate = new Date(birthYear.value.trim(), 
@@ -67,7 +67,7 @@ function checkValidInput() {
         return false;
     }
 
-    // if february, within 29 for leap days, or 28 (%4, or %400 && %1000 for leap centurys)
+    // if february, within 29 for leap days (%4, or %400 && %1000 for leap centurys), or 28 
     if((Number(birthDay.value.trim()) < 1 || Number(birthDay.value.trim()) > 29) 
     && birthDay.value.trim() != "" 
     && Number(birthMonth.value.trim()) == 2
@@ -127,53 +127,45 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     checkEmptyInput();
     checkValidInput();
-
-console.log("birth year: " + birthYear.value.trim());
-console.log("birth day: " + birthDay.value.trim());
-console.log("birth month: " + birthMonth.value.trim());
-
-
-console.log(userInfo.birthdate.year, userInfo.birthdate.month, userInfo.birthdate.day);
-console.log(userInfo.age.years, userInfo.age.months, userInfo.age.days);
+    if(checkEmptyInput() && checkValidInput()){
+        const userInfo = getBirthdateInfo();
+        outputResults(userInfo.age.years, userInfo.age.months, userInfo.age.days);
+    } else outputResults("--", "--", "--")
 })
 
 // funtions
-
 function getBirthdateInfo() {
-    const birthdate = new Date(birthYear, birthMonth - 1, birthDay); // YYYY, MM, DD format
+    const birthdate = new Date(birthYear.value.trim(), birthMonth.value.trim() - 1, birthDay.value.trim()); // YYYY, MM, DD format
     const age = calculateAge(birthdate);
+
+    console.log(birthdate)
 
     return {
         birthdate: {
-            year: birthYear.value.trim(),
-            month: birthMonth.value.trim(),
-            day: birthDay.value.trim()
+            year: birthdate.getFullYear(),
+            month: birthdate.getMonth() + 1,
+            day: birthdate.getDate()
         },
         age: age
     };
 }
 
-function calculateAge(birthdate) {
-    const birthDate = new Date(birthdate);
+function calculateAge(date) {
+    // const birthDate = new Date(birthdate);
     const currentDate = new Date();
-    const difference = currentDate - birthDate;
+    const difference = currentDate - date;
 
     const years = Math.floor(difference / (365.25 * 24 * 60 * 60 * 1000));
     const months = Math.floor((difference % (365.25 * 24 * 60 * 60 * 1000)) / (30.44 * 24 * 60 * 60 * 1000));
     const days = Math.floor((difference % (30.44 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
 
-    console.log(years, months, days)
+    console.log(years, months, days);
     return { years, months, days };
 }
 
-const userInfo = getBirthdateInfo();
-
-// console.log(userInfo.birthdate.year, userInfo.birthdate.month, userInfo.birthdate.day);
-// console.log(userInfo.age.years, userInfo.age.months, userInfo.age.days);
-
 // Output userInfo to innerText placeholders
-// function outputResults() {
-//     outputYear.textContent = userInfo.age.years;
-//     outputDay.textContent = userInfo.age.days;
-//     outputMonth.textContent = userInfo.age.months;
-// }
+function outputResults(years, months, days) {
+    outputYear.textContent = years;
+    outputDay.textContent = days;
+    outputMonth.textContent = months;
+}
