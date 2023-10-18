@@ -169,3 +169,7 @@ function outputResults(years, months, days) {
     outputDay.textContent = days;
     outputMonth.textContent = months;
 }
+
+
+
+// future refactor: https://youtu.be/iyngFd6f8ko?list=PLpc_YvcwbxaTAg0cGvqcDVmALsipqtJDY
